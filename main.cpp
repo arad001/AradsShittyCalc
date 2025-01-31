@@ -56,7 +56,7 @@ int main()
         break;
       case '/':
         if (num2 == 0)
-          std::cout << "You cannot divide by zero";
+          std::cout << "You cannot divide zero";
         else
           std::cout << num1 << " / " << num2 << " = " << (num1 / num2);
         break;
