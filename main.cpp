@@ -15,8 +15,9 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <cmath> // This is for exponentiatioin and square root functions
 #include <iostream>
 
-int main() {
-  int num1, num2;
+int main()
+{
+  double num1, num2;
   char oper;
 
   // Outputing the welcoming message
@@ -24,7 +25,8 @@ int main() {
   std::cout << "The possible operations are: \n Addition (+) \n Subtraction "
                "(-) \n Multiplication (*) \n Division (/) \n Exponentiaion "
                "(^) \n Square Root (v) \n Type (xx) to exit";
-  while (true) {
+  while (true)
+  {
     std::cout << std::endl;
     std::cout << "|>> "; // A kool prompt to type ur problems in
     std::cin >> num1 >> oper; // Recieving input for the 1st number and the operand
@@ -41,21 +43,31 @@ int main() {
                       // (Where you need more than 1 number)
 
     // Checking wherether what operator was used and do the responsible calculation
-    if (oper == '+') {
-      std::cout << num1 << " + " << num2 << " = " << (num1 + num2);
-    } else if (oper == '-') {
-      std::cout << num1 << " - " << num2 << " = " << (num1 - num2);
-    } else if (oper == '*') {
-      std::cout << num1 << " * " << num2 << " = " << (num1 * num2);
-    } else if (oper == '/') {
-      float division = num2; // Converting to float so it can divide properly
-      std::cout << num1 << " / " << num2 << " = " << (num1 / division);
-    } else if (oper == '^') {
-      std::cout << num1 << " ^ " << num2 << " = " << (pow(num1, num2));
-    } else {
-      std::cout << "Unknown operation. \n"
-                   "Use one of there operations: + - * / ^ v" << std::endl;
-    };
+    switch (oper)
+    {
+      case '+':
+        std::cout << num1 << " + " << num2 << " = " << (num1 + num2);
+        break;
+      case '-':
+        std::cout << num1 << " - " << num2 << " = " << (num1 - num2);
+        break;
+      case '*':
+        std::cout << num1 << " * " << num2 << " = " << (num1 * num2);
+        break;
+      case '/':
+        if (num2 == 0)
+          std::cout << "You cannot divide by zero";
+        else
+          std::cout << num1 << " / " << num2 << " = " << (num1 / num2);
+        break;
+      case '^':
+        std::cout << num1 << " ^ " << num2 << " = " << (pow(num1, num2));
+        break;
+      default:
+        std::cout << "Unknown operation. \n"
+                     "Use one of there operations: + - * / ^ v" << std::endl;
+        break;
+    }
   }
   return 0;
 }
